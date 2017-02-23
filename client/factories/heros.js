@@ -1,0 +1,32 @@
+app.factory('herosFactory',function($http,$location){
+	var factory={};
+	factory.addHero=function(hero){
+		console.log(hero);
+		$http.post('/addHero',hero).then(function(output){
+			console.log(output.data);
+			$location.url('/dash');
+		})
+	}
+	factory.getHeros=function(cb){
+		$http.get('/getHeros').then(function(output){
+			cb(output.data);
+		})
+	}
+	factory.like=function(id){
+		$http.post('/dash/like/'+id).then(function(output){
+			console.log('liked');
+		})
+	}
+	factory.disLike=function(id){
+		$http.post('/dash/dislike/'+id).then(function(output){
+			console.log('disliked');
+		})
+	}
+	factory.changeStatus=function(id,cb){
+		$http.post('/dash/changeStatus/'+id).then(function(output){
+			console.log(output.data);
+			cb(output.data);
+		})
+	}
+	return factory;
+})

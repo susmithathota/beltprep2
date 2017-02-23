@@ -1,0 +1,17 @@
+<div class="col-sm-6" ng-controller="herosController as HC">
+	<h3>Add A Hero</h3>
+	<p style="color:red" ng-repeat="error in HC.errors">{{error}}</p>
+	<form ng-submit="HC.addHero()">
+		<div class="form-group">
+			<label for="name">Name</label>
+			<input type="text" class="form-control" ng-model="HC.newHero.name">
+		</div>
+		<div class="form-group">
+			<label for="power">Power</label>
+			<input type="text" class="form-control" ng-model="HC.newHero.power">
+		</div>
+		<div class="form-group">
+			<input type="submit" value="Add" class="btn btn-primary">
+		</div>
+	</form>
+</div>
